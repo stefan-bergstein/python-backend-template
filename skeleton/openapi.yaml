@@ -3,9 +3,9 @@ info:
   title: python-app API
   version: 0.1.0
 servers:
-- url: http://python-backend-my-python-svc-dev.apps.ocp5.stormshift.coe.muc.redhat.com
+- url: http://python-backend-my-python-svc-dev.apps.cluster-c5bcf.sandbox1861.opentlc.com
   description: Auto generated value
-- url: https://python-backend-my-python-svc-dev.apps.ocp5.stormshift.coe.muc.redhat.com
+- url: https://python-backend-my-python-svc-dev.apps.cluster-c5bcf.sandbox1861.opentlc.com
   description: Auto generated value  
 paths:
   /:
