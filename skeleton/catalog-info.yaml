@@ -26,7 +26,7 @@ metadata:
       icon: web
 spec:
   type: service
-  lifecycle: production
+  lifecycle: development
   owner: ${{values.owner | dump}}
   providesApis:
     - ${{values.component_id | dump}}
@@ -40,7 +40,7 @@ metadata:
   {%- endif %}
 spec:
   type: openapi
-  lifecycle: production
+  lifecycle: development
   owner: ${{values.owner | dump}}
   definition:
     $text: ./openapi.yaml
