@@ -1,0 +1,40 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  labels:
+    tekton.dev/pipeline: python-backend-pipeline
+    backstage.io/kubernetes-id: ${{ values.component_id }}
+  # generateName: python-backend-pipeline-run-
+  name: python-backend-pipeline-run-first
+  namespace: ${{ values.component_id }}-dev
+  finalizers:
+  - chains.tekton.dev/pipelinerun
+spec:
+  params:
+  - name: image-host
+    value: ${{ values.image_host }}
+  - name: image-organization
+    value: ${{ values.image_organization }}   
+  - name: image-name
+    value: ${{ values.component_id }}
+  - name: image-tag
+    value: ${{ values.image_tag }} 
+  pipelineRef:
+    name: python-backend-pipeline
+  taskRunTemplate:
+    serviceAccountName: image-pusher
+  timeouts:
+    pipeline: 1h0m0s
+  workspaces:
+  - name: workspace
+    volumeClaimTemplate:
+      metadata:
+        creationTimestamp: null
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        volumeMode: Filesystem
+      status: {}
